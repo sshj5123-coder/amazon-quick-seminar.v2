@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amazon Quick 세미나 | 이테크시스템</title>
+<style>
+:root{
+  --ink:#20251f;--muted:#697067;--paper:#f7f7f2;--white:#fff;
+  --green:#c8ef63;--green-dark:#314b1d;--line:#dfe3d8;--orange:#ff7958;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Noto Sans KR",sans-serif;line-height:1.6;word-break:keep-all}
+.notice{background:var(--green);color:#26351b;text-align:center;padding:9px 14px;font-size:12px;font-weight:800;letter-spacing:.04em}
+.wrap{width:min(1160px,calc(100% - 52px));margin:auto}
+.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.logo{font-size:15px;font-weight:900;letter-spacing:-.04em;display:flex;align-items:center;gap:10px}
+.logo-mark{width:28px;height:28px;background:var(--ink);color:var(--green);display:grid;place-items:center;border-radius:50%;font-size:15px}
+.top-label{font-size:12px;color:var(--muted);font-weight:700}
+.hero{padding:66px 0 72px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid var(--line);border-radius:99px;font-size:11px;font-weight:850;letter-spacing:.08em;background:#fff}
+.pill i{width:7px;height:7px;border-radius:50%;background:var(--orange)}
+h1{font-size:clamp(43px,6.1vw,76px);line-height:1.08;letter-spacing:-.075em;margin:24px 0 20px;font-weight:900}
+h1 em{font-style:normal;position:relative;z-index:0;white-space:nowrap}
+h1 em:after{content:"";position:absolute;left:-2px;right:-4px;bottom:5px;height:19px;background:var(--green);z-index:-1;transform:rotate(-1.5deg)}
+.lead{max-width:510px;color:var(--muted);font-size:16px;margin:0}
+.hero-bottom{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:31px}
+.cta{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:#fff;text-decoration:none;padding:15px 21px;border-radius:4px;font-weight:800;font-size:14px;transition:.2s}
+.cta:hover{background:var(--green-dark);transform:translateY(-2px)}
+.hero-note{font-size:12px;color:var(--muted);font-weight:650}
+.visual{min-height:430px;background:var(--green);border-radius:4px;position:relative;overflow:hidden;padding:30px;display:flex;align-items:center;justify-content:center}
+.visual:before,.visual:after{content:"";position:absolute;border:1px solid rgba(32,37,31,.25);border-radius:50%;width:370px;height:370px}
+.visual:after{width:280px;height:280px}
+.data-card{position:relative;z-index:1;width:min(100%,360px);background:#fff;padding:24px;box-shadow:16px 18px 0 rgba(32,37,31,.12);transform:rotate(-3deg)}
+.data-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:850;color:#737b70}
+.data-top b{background:#eff6df;color:#4d6c25;padding:5px 8px;border-radius:3px}
+.data-title{font-size:22px;font-weight:900;letter-spacing:-.05em;margin:25px 0 17px}
+.chart{height:104px;display:flex;align-items:end;gap:9px;border-bottom:1px solid #e6e9e1;padding:0 6px}
+.bar{flex:1;background:#dce9c4;border-radius:3px 3px 0 0}
+.bar:nth-child(1){height:38%}.bar:nth-child(2){height:65%}.bar:nth-child(3){height:48%}.bar:nth-child(4){height:84%;background:#a9d64c}.bar:nth-child(5){height:70%}.bar:nth-child(6){height:100%;background:#314b1d}
+.data-foot{display:flex;justify-content:space-between;color:#81887e;font-size:10px;margin-top:12px}
+.visual-tag{position:absolute;right:24px;bottom:23px;font-size:10px;font-weight:900;letter-spacing:.13em}
+.meta-strip{background:#20251f;color:#fff;padding:21px 0}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.meta-item{padding-left:22px;border-left:1px solid #555c51}
+.meta-item small{display:block;color:#b5bdb0;font-size:10px;font-weight:800;letter-spacing:.12em}
+.meta-item strong{display:block;margin-top:3px;font-size:15px}
+section.content{padding:86px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:32px}
+.overline{font-size:11px;font-weight:900;letter-spacing:.14em;color:#73804f}
+h2{font-size:clamp(30px,4vw,45px);letter-spacing:-.06em;line-height:1.15;margin:9px 0 0}
+.section-desc{max-width:390px;color:var(--muted);font-size:14px;margin:0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:#fff;border:1px solid var(--line);padding:25px;min-height:192px}
+.card-num{font-size:11px;font-weight:900;color:#82915c;letter-spacing:.1em}
+.card h3{font-size:19px;letter-spacing:-.04em;margin:25px 0 8px}
+.card p{font-size:13px;color:var(--muted);margin:0}
+.agenda-section{background:#e9eddf}
+.agenda{border-top:1px solid #cfd5c5}
+.agenda-row{display:grid;grid-template-columns:190px 1fr 80px;gap:20px;padding:20px 5px;border-bottom:1px solid #cfd5c5;align-items:center}
+.agenda-time{font-size:13px;font-weight:850;color:#536b31;font-variant-numeric:tabular-nums}
+.agenda-name{font-size:15px;font-weight:850}
+.agenda-desc{font-size:12px;color:#737c6d;margin-top:3px}
+.agenda-duration{text-align:right;color:#78816f;font-size:12px}
+.register{background:#20251f;color:#fff;padding:86px 0}
+.register-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start}
+.register h2{font-size:clamp(34px,4vw,48px)}
+.register-copy{color:#b7c0b2;font-size:14px;max-width:330px;margin-top:18px}
+.event-stamp{display:inline-block;margin-top:22px;padding:10px 13px;border:1px solid #596151;color:var(--green);font-size:12px;font-weight:800}
+form{background:#fff;color:var(--ink);padding:30px;border-radius:4px}
+.field{margin-bottom:19px}
+label,legend{display:block;font-size:13px;font-weight:850;margin-bottom:7px}
+.req{color:#e16b51}
+input,select{width:100%;height:47px;padding:10px 12px;border:1px solid #dce1d7;border-radius:3px;background:#fff;font:inherit;font-size:13px;color:var(--ink);outline:none}
+input:focus,select:focus{border-color:#8cae45;box-shadow:0 0 0 3px rgba(200,239,99,.28)}
+input::placeholder{color:#a4aaa0}
+fieldset{border:0;padding:0;margin:0 0 20px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.choice{display:flex;align-items:center;gap:8px;padding:10px;border:1px solid #e1e5dd;font-size:12px;border-radius:3px;cursor:pointer}
+.choice input{width:15px;height:15px;margin:0;accent-color:#718e39}
+.hint{font-size:11px;color:#828a7e;margin:7px 0 0}
+.submit{width:100%;border:0;background:var(--green);color:#24311b;height:51px;border-radius:3px;font:inherit;font-size:14px;font-weight:900;cursor:pointer;margin-top:4px}
+.submit:hover{background:#b9e64d}
+.privacy{text-align:center;color:#9aa194;font-size:10px;margin:12px 0 0}
+.success{display:none;text-align:center;background:#f4f8e9;color:#26351b;padding:34px 22px}
+.success.show{display:block}
+.success b{display:block;font-size:22px;margin-bottom:7px}
+.success p{font-size:13px;margin:0;color:#68765a}
+footer{padding:23px 0;background:#171b16;color:#9ca494;font-size:11px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:760px){
+ .wrap{width:calc(100% - 36px)}.topbar{height:64px}.top-label{font-size:10px}
+ .hero{padding:43px 0 45px}.hero-grid{grid-template-columns:1fr;gap:36px}
+ h1{font-size:clamp(43px,12vw,62px);margin-top:20px}.lead{font-size:14px}
+ .visual{min-height:320px;padding:22px}.data-card{max-width:300px;padding:20px}
+ .meta-grid{grid-template-columns:1fr;gap:14px}.meta-item{padding-left:14px}
+ section.content{padding:60px 0}.section-head{display:block}.section-desc{margin-top:14px}
+ .cards{grid-template-columns:1fr}.card{min-height:0;padding:21px}.card h3{margin:16px 0 7px}
+ .agenda-row{grid-template-columns:1fr auto;gap:4px 12px;padding:17px 2px}
+ .agenda-name,.agenda-desc{grid-column:1}.agenda-time{grid-column:1}.agenda-duration{grid-column:2;grid-row:1 / span 2}
+ .register{padding:60px 0}.register-grid{grid-template-columns:1fr;gap:28px}
+ form{padding:22px 17px}.choices{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="notice">교육용 예시 페이지입니다</div>
+<header class="wrap topbar">
+  <div class="logo"><span class="logo-mark">e</span> 이테크시스템</div>
+  <div class="top-label">DATA × AI SEMINAR · 2026</div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="pill"><i></i> FREE OFFLINE SEMINAR</div>
+      <h1>데이터로 묻고,<br><em>AI로 움직이세요.</em></h1>
+      <p class="lead">흩어진 기업 데이터를 연결하고, Amazon Quick으로 질문에서 인사이트까지. 데이터가 실제 업무에 활용되는 과정을 직접 확인해 보세요.</p>
+      <div class="hero-bottom">
+        <a class="cta" href="#apply">참가 신청하기&nbsp; ↗</a>
+        <span class="hero-note">무료 참가 · 사전 신청</span>
+      </div>
+    </div>
+    <div class="visual" aria-label="데이터 분석 대시보드 그래픽">
+      <div class="data-card">
+        <div class="data-top"><span>QUICK INSIGHTS</span><b>LIVE DATA</b></div>
+        <div class="data-title">데이터를 읽고<br>다음 행동을 찾다.</div>
+        <div class="chart"><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i></div>
+        <div class="data-foot"><span>DATA OVERVIEW</span><span>ASK · ANALYZE · ACT</span></div>
+      </div>
+      <div class="visual-tag">TURN DATA INTO ACTION ↗</div>
+    </div>
+  </div>
+</section>
+
+<div class="meta-strip">
+  <div class="wrap meta-grid">
+    <div class="meta-item"><small>DATE & TIME</small><strong>2026. 11. 19 (목) 14:00–16:40</strong></div>
+    <div class="meta-item"><small>FORMAT</small><strong>오프라인 세미나 · 160분</strong></div>
+    <div class="meta-item"><small>ADMISSION</small><strong>무료 참가</strong></div>
+  </div>
+</div>
+
+<section class="content">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="overline">WHAT YOU'LL EXPLORE</div><h2>데이터 활용의 흐름을<br>직접 경험해 보세요.</h2></div>
+      <p class="section-desc">도구 소개에 그치지 않고, 데이터 연결부터 질문과 분석, 업무 활용까지 이어지는 과정을 살펴봅니다.</p>
+    </div>
+    <div class="cards">
+      <article class="card"><div class="card-num">01 — CONNECT</div><h3>흩어진 데이터 연결</h3><p>기업 내 다양한 데이터 소스를 연결하고 필요한 정보를 한 흐름에서 살펴보는 방법</p></article>
+      <article class="card"><div class="card-num">02 — ASK</div><h3>질문으로 시작하는 분석</h3><p>자연어 질의를 활용해 데이터를 탐색하고 업무에 필요한 인사이트를 확인하는 과정</p></article>
+      <article class="card"><div class="card-num">03 — APPLY</div><h3>실제 업무에 적용하기</h3><p>기업 업무 시나리오와 실습을 통해 데이터 기반 의사결정 활용 사례 살펴보기</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="content agenda-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="overline">SESSION FLOW</div><h2>세미나 프로그램</h2></div>
+      <p class="section-desc">총 160분 동안 기능 시연과 업무 적용 사례, 질의응답을 진행합니다.</p>
+    </div>
+    <div class="agenda">
+      <div class="agenda-row"><div class="agenda-time">14:00–14:20</div><div><div class="agenda-name">오프닝 및 데이터 활용 환경의 변화</div><div class="agenda-desc">기업 데이터 활용 환경과 AI 기반 업무 활용의 필요성</div></div><div class="agenda-duration">20 MIN</div></div>
+      <div class="agenda-row"><div class="agenda-time">14:20–15:10</div><div><div class="agenda-name">Amazon Quick 주요 기능 소개 및 시연</div><div class="agenda-desc">데이터 연결 · 자연어 질의 · 인사이트 도출</div></div><div class="agenda-duration">50 MIN</div></div>
+      <div class="agenda-row"><div class="agenda-time">15:10–15:20</div><div><div class="agenda-name">휴식 및 네트워킹</div></div><div class="agenda-duration">10 MIN</div></div>
+      <div class="agenda-row"><div class="agenda-time">15:20–16:10</div><div><div class="agenda-name">기업 업무 적용 사례 및 실습</div><div class="agenda-desc">데이터 분석부터 업무 활용까지 실제 시나리오 체험</div></div><div class="agenda-duration">50 MIN</div></div>
+      <div class="agenda-row"><div class="agenda-time">16:10–16:40</div><div><div class="agenda-name">도입 상담 및 Q&A</div><div class="agenda-desc">기업별 도입 과제 확인 및 후속 기술 상담 안내</div></div><div class="agenda-duration">30 MIN</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="register" id="apply">
+  <div class="wrap register-grid">
+    <div>
+      <div class="overline" style="color:#c8ef63">JOIN THE SEMINAR</div>
+      <h2>데이터를 보는 방식,<br>업무의 다음 단계.</h2>
+      <p class="register-copy">Amazon Quick을 활용한 전사 데이터 활용 방법을 확인해 보세요. 아래 신청 정보를 입력하면 완료 안내가 표시됩니다.</p>
+      <div class="event-stamp">NOV 19, 2026 · 14:00–16:40 · FREE</div>
+    </div>
+    <div>
+      <form id="form">
+        <div class="field"><label for="name">이름 <span class="req">*</span></label><input id="name" name="name" placeholder="이름을 입력해 주세요" autocomplete="name" required></div>
+        <div class="field"><label for="company">회사명 <span class="req">*</span></label><input id="company" name="company" placeholder="회사명을 입력해 주세요" autocomplete="organization" required></div>
+        <div class="field"><label for="role">부서와 직무 <span class="req">*</span></label><input id="role" name="role" placeholder="예: IT전략팀 / 데이터 엔지니어" required></div>
+        <div class="field"><label for="email">업무용 이메일 <span class="req">*</span></label><input id="email" name="email" type="email" placeholder="name@company.com" autocomplete="email" required></div>
+        <fieldset><legend>관심 분야 <span class="req">*</span></legend>
+          <div class="choices">
+            <label class="choice"><input type="checkbox" name="interest" value="Amazon Quick 기능">Amazon Quick 기능</label>
+            <label class="choice"><input type="checkbox" name="interest" value="데이터 통합 및 분석">데이터 통합 및 분석</label>
+            <label class="choice"><input type="checkbox" name="interest" value="생성형 AI 업무 활용">생성형 AI 업무 활용</label>
+            <label class="choice"><input type="checkbox" name="interest" value="클라우드 전환 및 확장">클라우드 전환 및 확장</label>
+            <label class="choice"><input type="checkbox" name="interest" value="도입 컨설팅 및 기술 상담">도입 컨설팅 및 기술 상담</label>
+            <label class="choice"><input type="checkbox" name="interest" value="사례 및 실습">사례 및 실습</label>
+          </div>
+          <p class="hint">관심 분야를 하나 이상 선택해 주세요.</p>
+        </fieldset>
+        <div class="field"><label for="timing">도입 검토 시기 <span class="req">*</span></label>
+          <select id="timing" name="timing" required>
+            <option value="">검토 시기를 선택해 주세요</option>
+            <option>3개월 이내</option><option>6개월 이내</option><option>1년 이내</option><option>1년 이후</option><option>미정 / 정보 수집 단계</option><option>현재 도입 계획 없음</option>
+          </select>
+        </div>
+        <button class="submit" type="submit">신청하기&nbsp; ↗</button>
+        <p class="privacy">교육용 예시 페이지이며 입력한 정보는 전송·저장되지 않습니다.</p>
+      </form>
+      <div class="success" id="success" role="status" aria-live="polite"><b>신청이 완료되었습니다.</b><p>교육용 예시 페이지입니다. 입력 정보는 전송되거나 저장되지 않았습니다.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap"><span>© 2026 이테크시스템 · 교육용 예시 페이지</span><span>DATA × AI SEMINAR</span></div></footer>
+<script>
+const form=document.getElementById('form');
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  if(!form.reportValidity()) return;
+  if(!form.querySelector('input[name="interest"]:checked')){
+    alert('관심 분야를 하나 이상 선택해 주세요.');
+    form.querySelector('input[name="interest"]').focus();
+    return;
+  }
+  form.hidden=true;
+  document.getElementById('success').classList.add('show');
+  document.getElementById('success').scrollIntoView({behavior:'smooth',block:'center'});
+});
+</script>
+</body>
+</html>
