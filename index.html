@@ -191,50 +191,82 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <div class="event-stamp">NOV 19, 2026 · 14:00–16:40 · FREE</div>
     </div>
     <div>
-      <form id="form">
-        <div class="field"><label for="name">이름 <span class="req">*</span></label><input id="name" name="name" placeholder="이름을 입력해 주세요" autocomplete="name" required></div>
-        <div class="field"><label for="company">회사명 <span class="req">*</span></label><input id="company" name="company" placeholder="회사명을 입력해 주세요" autocomplete="organization" required></div>
-        <div class="field"><label for="role">부서와 직무 <span class="req">*</span></label><input id="role" name="role" placeholder="예: IT전략팀 / 데이터 엔지니어" required></div>
-        <div class="field"><label for="email">업무용 이메일 <span class="req">*</span></label><input id="email" name="email" type="email" placeholder="name@company.com" autocomplete="email" required></div>
+      <form id="form"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSeFgkR1AGtlTf7qn8H9mqPvtJQNL-UXrmnDdeVhhFmtIUfsLA/formResponse"
+        method="POST"
+        target="google-form-iframe">
+        <div class="field"><label for="name">이름 <span class="req">*</span></label><input id="name" name="entry.2018346178" placeholder="이름을 입력해 주세요" autocomplete="name" required></div>
+        <div class="field"><label for="company">회사명 <span class="req">*</span></label><input id="company" name="entry.1222753455" placeholder="회사명을 입력해 주세요" autocomplete="organization" required></div>
+        <div class="field"><label for="role">부서와 직무 <span class="req">*</span></label><input id="role" name="entry.267365057" placeholder="예: IT전략팀 / 데이터 엔지니어" required></div>
+        <div class="field"><label for="email">업무용 이메일 <span class="req">*</span></label><input id="email" name="entry.1965559101" type="email" placeholder="name@company.com" autocomplete="email" required></div>
         <fieldset><legend>관심 분야 <span class="req">*</span></legend>
           <div class="choices">
-            <label class="choice"><input type="checkbox" name="interest" value="Amazon Quick 기능">Amazon Quick 기능</label>
-            <label class="choice"><input type="checkbox" name="interest" value="데이터 통합 및 분석">데이터 통합 및 분석</label>
-            <label class="choice"><input type="checkbox" name="interest" value="생성형 AI 업무 활용">생성형 AI 업무 활용</label>
-            <label class="choice"><input type="checkbox" name="interest" value="클라우드 전환 및 확장">클라우드 전환 및 확장</label>
-            <label class="choice"><input type="checkbox" name="interest" value="도입 컨설팅 및 기술 상담">도입 컨설팅 및 기술 상담</label>
-            <label class="choice"><input type="checkbox" name="interest" value="사례 및 실습">사례 및 실습</label>
+            <label class="choice"><input type="checkbox" name="entry.547880094" value="Amazon Quick 기능">Amazon Quick 기능</label>
+            <label class="choice"><input type="checkbox" name="entry.547880094" value="데이터 통합 및 분석">데이터 통합 및 분석</label>
+            <label class="choice"><input type="checkbox" name="entry.547880094" value="생성형 AI 업무 활용">생성형 AI 업무 활용</label>
+            <label class="choice"><input type="checkbox" name="entry.547880094" value="클라우드 전환 및 확장">클라우드 전환 및 확장</label>
+            <label class="choice"><input type="checkbox" name="entry.547880094" value="도입 컨설팅 및 기술 상담">도입 컨설팅 및 기술 상담</label>
+            <label class="choice"><input type="checkbox" name="entry.547880094" value="사례 및 실습">사례 및 실습</label>
           </div>
           <p class="hint">관심 분야를 하나 이상 선택해 주세요.</p>
         </fieldset>
         <div class="field"><label for="timing">도입 검토 시기 <span class="req">*</span></label>
-          <select id="timing" name="timing" required>
+          <select id="timing" name="entry.1956056450" required>
             <option value="">검토 시기를 선택해 주세요</option>
             <option>3개월 이내</option><option>6개월 이내</option><option>1년 이내</option><option>1년 이후</option><option>미정 / 정보 수집 단계</option><option>현재 도입 계획 없음</option>
           </select>
         </div>
-        <button class="submit" type="submit">신청하기&nbsp; ↗</button>
-        <p class="privacy">교육용 예시 페이지이며 입력한 정보는 전송·저장되지 않습니다.</p>
+        <input type="hidden" id="utm_source" name="entry.178380041">
+        <input type="hidden" id="utm_medium" name="entry.430430941">
+        <input type="hidden" id="utm_campaign" name="entry.1805224746">
+        <button class="submit" id="submit-button" type="submit">신청하기&nbsp; ↗</button>
+        <p class="privacy">신청 정보는 Google Forms로 전송됩니다.</p>
       </form>
-      <div class="success" id="success" role="status" aria-live="polite"><b>신청이 완료되었습니다.</b><p>교육용 예시 페이지입니다. 입력 정보는 전송되거나 저장되지 않았습니다.</p></div>
+      <iframe name="google-form-iframe" id="google-form-iframe" title="Google Forms submission" style="display:none"></iframe>
+      <div class="success" id="success" role="status" aria-live="polite"><b>신청이 완료되었습니다.</b><p>세미나 신청이 접수되었습니다. 감사합니다.</p></div>
     </div>
   </div>
 </section>
 </main>
 <footer><div class="wrap"><span>© 2026 이테크시스템 · 교육용 예시 페이지</span><span>DATA × AI SEMINAR</span></div></footer>
 <script>
-const form=document.getElementById('form');
-form.addEventListener('submit',e=>{
-  e.preventDefault();
-  if(!form.reportValidity()) return;
-  if(!form.querySelector('input[name="interest"]:checked')){
-    alert('관심 분야를 하나 이상 선택해 주세요.');
-    form.querySelector('input[name="interest"]').focus();
+const form = document.getElementById('form');
+const iframe = document.getElementById('google-form-iframe');
+const success = document.getElementById('success');
+const submitButton = document.getElementById('submit-button');
+let submitted = false;
+
+// 페이지 URL의 UTM 값을 Google Forms 숨은 입력칸에 설정
+const params = new URLSearchParams(window.location.search);
+document.getElementById('utm_source').value = params.get('utm_source') || '';
+document.getElementById('utm_medium').value = params.get('utm_medium') || '';
+document.getElementById('utm_campaign').value = params.get('utm_campaign') || '';
+
+form.addEventListener('submit', (e) => {
+  if (!form.reportValidity()) {
+    e.preventDefault();
     return;
   }
-  form.hidden=true;
-  document.getElementById('success').classList.add('show');
-  document.getElementById('success').scrollIntoView({behavior:'smooth',block:'center'});
+
+  const checked = form.querySelectorAll('input[name="entry.547880094"]:checked');
+  if (!checked.length) {
+    e.preventDefault();
+    alert('관심 분야를 하나 이상 선택해 주세요.');
+    form.querySelector('input[name="entry.547880094"]').focus();
+    return;
+  }
+
+  // 기본 POST 동작을 유지해 숨은 iframe으로 제출
+  submitted = true;
+  submitButton.disabled = true;
+  submitButton.textContent = '신청 접수 중...';
+});
+
+iframe.addEventListener('load', () => {
+  if (!submitted) return;
+  form.hidden = true;
+  success.classList.add('show');
+  success.scrollIntoView({behavior:'smooth', block:'center'});
 });
 </script>
 </body>
