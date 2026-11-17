@@ -192,33 +192,34 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
     <div>
       <form id="form"
-        action="https://docs.google.com/forms/d/e/1FAIpQLSeFgkR1AGtlTf7qn8H9mqPvtJQNL-UXrmnDdeVhhFmtIUfsLA/formResponse"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSccShf2pgFQDrINk5-dg-eLAaKylwR70IyfY4uZVRka-mhiEw/formResponse"
         method="POST"
         target="google-form-iframe">
-        <div class="field"><label for="name">이름 <span class="req">*</span></label><input id="name" name="entry.2018346178" placeholder="이름을 입력해 주세요" autocomplete="name" required></div>
-        <div class="field"><label for="company">회사명 <span class="req">*</span></label><input id="company" name="entry.1222753455" placeholder="회사명을 입력해 주세요" autocomplete="organization" required></div>
-        <div class="field"><label for="role">부서와 직무 <span class="req">*</span></label><input id="role" name="entry.267365057" placeholder="예: IT전략팀 / 데이터 엔지니어" required></div>
-        <div class="field"><label for="email">업무용 이메일 <span class="req">*</span></label><input id="email" name="entry.1965559101" type="email" placeholder="name@company.com" autocomplete="email" required></div>
+        <div class="field"><label for="name">이름 <span class="req">*</span></label><input id="name" name="entry.1947696717" placeholder="이름을 입력해 주세요" autocomplete="name" required></div>
+        <div class="field"><label for="company">회사명 <span class="req">*</span></label><input id="company" name="entry.1379354498" placeholder="회사명을 입력해 주세요" autocomplete="organization" required></div>
+        <div class="field"><label for="role">부서와 직무 <span class="req">*</span></label><input id="role" name="entry.1199476356" placeholder="예: IT전략팀 / 데이터 엔지니어" required></div>
+        <div class="field"><label for="email">업무용 이메일 <span class="req">*</span></label><input id="email" name="entry.1681620257" type="email" placeholder="name@company.com" autocomplete="email" required></div>
         <fieldset><legend>관심 분야 <span class="req">*</span></legend>
           <div class="choices">
-            <label class="choice"><input type="checkbox" name="entry.547880094" value="Amazon Quick 기능">Amazon Quick 기능</label>
-            <label class="choice"><input type="checkbox" name="entry.547880094" value="데이터 통합 및 분석">데이터 통합 및 분석</label>
-            <label class="choice"><input type="checkbox" name="entry.547880094" value="생성형 AI 업무 활용">생성형 AI 업무 활용</label>
-            <label class="choice"><input type="checkbox" name="entry.547880094" value="클라우드 전환 및 확장">클라우드 전환 및 확장</label>
-            <label class="choice"><input type="checkbox" name="entry.547880094" value="도입 컨설팅 및 기술 상담">도입 컨설팅 및 기술 상담</label>
-            <label class="choice"><input type="checkbox" name="entry.547880094" value="사례 및 실습">사례 및 실습</label>
+            <label class="choice"><input type="checkbox" class="interest" value="Amazon Quick 기능">Amazon Quick 기능</label>
+            <label class="choice"><input type="checkbox" class="interest" value="데이터 통합 및 분석">데이터 통합 및 분석</label>
+            <label class="choice"><input type="checkbox" class="interest" value="생성형 AI 업무 활용">생성형 AI 업무 활용</label>
+            <label class="choice"><input type="checkbox" class="interest" value="클라우드 전환 및 확장">클라우드 전환 및 확장</label>
+            <label class="choice"><input type="checkbox" class="interest" value="도입 컨설팅 및 기술 상담">도입 컨설팅 및 기술 상담</label>
+            <label class="choice"><input type="checkbox" class="interest" value="사례 및 실습">사례 및 실습</label>
           </div>
           <p class="hint">관심 분야를 하나 이상 선택해 주세요.</p>
         </fieldset>
         <div class="field"><label for="timing">도입 검토 시기 <span class="req">*</span></label>
-          <select id="timing" name="entry.1956056450" required>
+          <select id="timing" name="entry.1174160815" required>
             <option value="">검토 시기를 선택해 주세요</option>
             <option>3개월 이내</option><option>6개월 이내</option><option>1년 이내</option><option>1년 이후</option><option>미정 / 정보 수집 단계</option><option>현재 도입 계획 없음</option>
           </select>
         </div>
-        <input type="hidden" id="utm_source" name="entry.220587035">
-        <input type="hidden" id="utm_medium" name="entry.1516716539">
-        <input type="hidden" id="utm_campaign" name="entry.252617920">
+        <input type="hidden" id="interest" name="entry.229144979">
+        <input type="hidden" id="utm_source" name="entry.261192574">
+        <input type="hidden" id="utm_medium" name="entry.665466225">
+        <input type="hidden" id="utm_campaign" name="entry.596664579">
         <button class="submit" id="submit-button" type="submit">신청하기&nbsp; ↗</button>
         <p class="privacy">신청 정보는 Google Forms로 전송됩니다.</p>
       </form>
@@ -248,13 +249,16 @@ form.addEventListener('submit', (e) => {
     return;
   }
 
-  const checked = form.querySelectorAll('input[name="entry.547880094"]:checked');
+  const checked = form.querySelectorAll('.interest:checked');
   if (!checked.length) {
     e.preventDefault();
     alert('관심 분야를 하나 이상 선택해 주세요.');
-    form.querySelector('input[name="entry.547880094"]').focus();
+    form.querySelector('.interest').focus();
     return;
   }
+
+  // 관심 분야(구글 폼 단답형)에 선택값을 쉼표로 합쳐 한 칸으로 전송
+  document.getElementById('interest').value = [...checked].map(c => c.value).join(', ');
 
   // 기본 POST 동작을 유지해 숨은 iframe으로 제출
   submitted = true;
